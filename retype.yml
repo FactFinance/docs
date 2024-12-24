@@ -1,0 +1,27 @@
+input: ./docs
+output:  /srv/fact/docs/
+url: https://docs.fact.finance/
+favicon: static/favicon.ico
+branding:
+  label: v0.1
+  logo: /static/logo-short.png
+  logoDark: /static/logo-short-dark.png
+
+links:
+- text: Getting Started
+  icon: rocket
+  link: /getting-started
+- text: FAQ
+  icon: question
+  link: /faq
+- text: Support
+  link: mailto:support@fact.finance
+  icon: comment-discussion
+footer:
+  links: 
+    - text: X
+      link: https://x.com/TheFactOracle
+    - text: Linkedin
+      link: https://www.linkedin.com/company/fact-finance-oracle/ 
+  copyright: "&copy; Copyright {{ year }}. All rights reserved."
+

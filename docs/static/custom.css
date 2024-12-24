@@ -1,0 +1,17 @@
+.dark .rounded-md {
+  background-color: #1e1e1e !important;
+  --mermaid-primary-color: #9eabe1;
+  --mermaid-text-color: #ffffff;
+}
+
+.dark .actor {
+ fill: #a5abd8 !important;
+}
+
+.dark .messageText {
+	fill:#787b9a !important;
+}
+.dark line {
+ stroke: #5d567f !important;
+ }
+
