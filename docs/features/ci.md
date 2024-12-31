@@ -47,8 +47,12 @@ $$
 $$
 \displaystyle reach\_dist_k(p, o) = \max\{d(p, o), k\text{-dist}(o)\}
 $$
+
 ￼
-￼
+###￼Why Use LOF Over Standard Deviation?
+
+The Local Outlier Factor (LOF) provides distinct advantages over standard deviation methods for identifying outliers. Unlike standard deviation, which relies on global statistical properties and assumes a normal distribution, LOF is density-based and evaluates a point’s isolation relative to its local neighborhood. This makes LOF particularly effective for datasets with varying densities, multimodal distributions, or complex structures. For example, in cases where some data clusters are more concentrated while others are sparse, standard deviation may fail to detect anomalies in dense regions. LOF, on the other hand, adapts to these local variations, making it more robust in detecting both global and local anomalies. This flexibility is crucial in dynamic environments like decentralized finance, where data reliability directly impacts protocol operations.
+
 ## Objective of the Confidence Index
 
 The primary goal of the Confidence Index is to help protocols that utilize the Fact Finance Oracle efficiently automate the handling of data feeds based on their reliability classification. This minimizes risk exposure and enhances operational robustness.
