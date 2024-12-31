@@ -23,7 +23,7 @@ The DataFeed struct represents the oracle data feed. It includes the following f
 - `value`: The raw integer data.
 - `updatedAt`: A timestamp indicating when the data was last updated.
 - `decimal`: The number of decimal places for scaling the value.
-- `confidence`: A score indicating the reliability of the data (1 = reliable, 2 = acceptable, 3 = outlier).
+- `confidence`: A score indicating the reliability of the data (95 = reliable, 5 = acceptable, 0 = outlier).
 
 ==- 4. How do I calculate the actual value from a data feed?
 Use the formula:
@@ -66,29 +66,29 @@ Outlier
 :	The data is significantly deviated and should be treated with caution, potentially rejected outright.
 
 Examples of Handling Confidence Levels:
-1.	Outlier (`3`):
+1.	Outlier:
 Scenario: A lending platform detects an outlier in asset pricing. To protect users, it limits withdrawal amounts until the data is verified or updated.
 
 ```solidity
-if (data.confidence == 3) {
+if (data.confidence == 0) {
     revert("Data is classified as an outlier. Action restricted.");
 }
 ```
 
-2.	Acceptable (`2`):
+2.	Acceptable:
 Scenario: A stablecoin protocol detects acceptable volatility in forex data. To mitigate risk, it increases the spread for transactions temporarily.
 
 ```solidity
-if (data.confidence == 2) {
+if (data.confidence == 5) {
     adjustSpread(); // Implement logic to increase the spread
 }
 ```
 
-3.	Reliable (`1`):
+3.	Reliable:
 Scenario: When the data is reliable, the protocol proceeds with standard operations.
 
 ```solidity
-if (data.confidence == 1) {
+if (data.confidence == 95) {
     processTransaction(); // Normal operations
 }
 ```
