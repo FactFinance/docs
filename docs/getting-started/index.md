@@ -40,7 +40,7 @@ struct DataFeed {
     uint256 updatedAt;   /// @dev Timestamp of the last data update
     uint8 decimal;       /// @dev Number of decimal places for interpreting the value
     uint8 confidence;    /// @dev Confidence level of the data feed
-                         /// @dev 1: outlier, 2: acceptable, 3: reliable
+                         /// @dev 0: outlier, 5: acceptable, 95: reliable
 }
 ```
 
@@ -57,9 +57,9 @@ Explanation:
 
 4. `confidence`:  
 - Represents the reliability of the data feed:  
-  - `3`: Outlier (use with caution).  
-  - `2`: Acceptable (mild volatility).  
-  - `1`: Reliable (highly trustworthy).
+  - `0`: Outlier (use with caution).  
+  - `5`: Acceptable (mild volatility).  
+  - `95`: Reliable (highly trustworthy).
 
 
 ### Interacting with FOInterfaceV1
@@ -74,11 +74,11 @@ Explanation:
 
 2. Methods
 
-   **getFeed():** Retrieve the latest data feed for a specific `feedId`.  
+   **getFeed():** Retrieve the latest data feed for a specific `code`.  
    Example:
    ```solidity
-   function getFeed(uint8 _feedId) public {
-       DataFeed memory data = fOracle.getFeed(_feedId); 
+   function getFeed(uint8 _code) public {
+       DataFeed memory data = fOracle.getFeed(_code); 
        // Calculate actual value
        int256 actualValue = data.value * int256(10 ** data.decimal);
        // Check if data is fresh
@@ -112,9 +112,9 @@ Ensure data retrieved from the oracle is not expired by comparing `data.updatedA
 
 3. **Handle Confidence Levels:**  
 Implement logic to treat `confidence` appropriately. For example:  
-- Reject feeds with `confidence = 3`.  
-- Use stricter rules for `confidence = 2`.  
-- Fully trust data with `confidence = 1`.
+- Reject feeds with `confidence = 0`.  
+- Use stricter rules for `confidence = 5`.  
+- Fully trust data with `confidence = 95`.
 
 
 4. **Use Decimals Correctly:**  
