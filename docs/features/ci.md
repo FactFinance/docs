@@ -11,28 +11,30 @@ The Fact Finance Oracle Confidence Index is a methodology designed to classify d
 ## How It Works
 
 The methodology categorizes values into three tiers based on their statistical deviation and density-based scores:
-1. **Reliable**
-- Data points that fall within standard deviation of the historical mean. These values are considered highly stable and reliable.
 
-- Formula:
+- **Reliable** `95`
+   - Data points that fall within standard deviation of the historical mean. These values are considered highly stable and reliable.
 
-$$
-\displaystyle \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}}
-$$
+   - Formula:
 
-2. **Acceptable:**
-- Data points that fall between and standard deviations of the mean. These values suggest mild volatility but are still within an acceptable range for most protocols.
-- Formula:
+   $$
+   \displaystyle \sigma = \sqrt{\frac{\sum_{i=1}^n (x_i - \bar{x})^2}{n}}
+   $$
 
-$$
-\bar{x} - 2\sigma \leq x \leq \bar{x} + 2\sigma
-$$
-￼
+
+- **Acceptable:** `5`
+   - Data points that fall between and standard deviations of the mean. These values suggest mild volatility but are still within an acceptable range for most protocols.
+   - Formula:
+
+   $$
+   \bar{x} - 2\sigma \leq x \leq \bar{x} + 2\sigma
+   $$
+
 Data points in this range are flagged as acceptable for further use, but protocols are encouraged to take precautions, such as increasing spreads or adjusting collateral.
 
-3. **Outlier:**
-- Data points identified as anomalies based on the Local Outlier Factor (LOF) algorithm. LOF is a density-based method that measures how isolated a point is relative to its neighbors.
-- Formula (LOF):
+- **Outlier:** `0`
+   - Data points identified as anomalies based on the Local Outlier Factor (LOF) algorithm. LOF is a density-based method that measures how isolated a point is relative to its neighbors.
+   - Formula (LOF):
 The LOF score of a point $\displaystyle \left( p \right)$ is calculated as:
 
 $$
@@ -48,10 +50,10 @@ $$
 \displaystyle reach\_dist_k(p, o) = \max\{d(p, o), k\text{-dist}(o)\}
 $$
 
-￼
-###￼Why Use LOF Over Standard Deviation?
 
-The Local Outlier Factor (LOF) provides distinct advantages over standard deviation methods for identifying outliers. Unlike standard deviation, which relies on global statistical properties and assumes a normal distribution, LOF is density-based and evaluates a point’s isolation relative to its local neighborhood. This makes LOF particularly effective for datasets with varying densities, multimodal distributions, or complex structures. For example, in cases where some data clusters are more concentrated while others are sparse, standard deviation may fail to detect anomalies in dense regions. LOF, on the other hand, adapts to these local variations, making it more robust in detecting both global and local anomalies. This flexibility is crucial in dynamic environments like decentralized finance, where data reliability directly impacts protocol operations.
+###￼Why Use Local Outlier Factor for Outlier?
+
+The LOF provides distinct advantages over standard deviation methods for identifying outliers. Unlike standard deviation, which relies on global statistical properties and assumes a normal distribution, LOF is density-based and evaluates a point’s isolation relative to its local neighborhood. This makes LOF particularly effective for datasets with varying densities, multimodal distributions, or complex structures. For example, in cases where some data clusters are more concentrated while others are sparse, standard deviation may fail to detect anomalies in dense regions. LOF, on the other hand, adapts to these local variations, making it more robust in detecting both global and local anomalies. This is especially relevant when **analyzing economic indices**, which often exhibit cyclical behavior, as LOF can better handle local deviations within these cycles. This flexibility is crucial in dynamic environments like decentralized finance, where data reliability directly impacts protocol operations.
 
 ## Objective of the Confidence Index
 
@@ -64,9 +66,9 @@ Scenario: Stablecoins rely on oracle price feeds to maintain their peg to fiat c
 
 Implementation:
 
-- **Acceptable (2)**: When data is classified as “Acceptable,” it indicates market volatility. The stablecoin protocol can increase the spread for swaps to mitigate slippage risk.
+- **Acceptable (5)**: When data is classified as “Acceptable,” it indicates market volatility. The stablecoin protocol can increase the spread for swaps to mitigate slippage risk.
 
-- **Outlier (3)**: When data is flagged as an “Outlier” (using LOF), the stablecoin protocol can halt swaps temporarily to avoid using manipulated or unreliable price feeds.
+- **Outlier (0)**: When data is flagged as an “Outlier” (using LOF), the stablecoin protocol can halt swaps temporarily to avoid using manipulated or unreliable price feeds.
 
 >Outcome: Maintained stability and prevention of cascading failures during market volatility.
 
@@ -75,8 +77,8 @@ Scenario: Lending protocols rely on asset price feeds to manage collateralized l
 
 Implementation:
 
-- **Acceptable (2):** When a price feed is “Acceptable,” the protocol can reduce the Loan-to-Value (LTV) ratio to hedge against potential price inaccuracies.
-- **Outlier (3):** If a price feed is flagged as an “Outlier,” the lending protocol can reject loan requests or trigger partial liquidations for safety.
+- **Acceptable (5):** When a price feed is “Acceptable,” the protocol can reduce the Loan-to-Value (LTV) ratio to hedge against potential price inaccuracies.
+- **Outlier (0):** If a price feed is flagged as an “Outlier,” the lending protocol can reject loan requests or trigger partial liquidations for safety.
 >Outcome: Enhanced collateral management and reduced risk of bad debt.
 
 ### Tokenization Platforms
@@ -84,8 +86,8 @@ Scenario: Tokenization platforms depend on oracles for accurate valuations of to
 
 Implementation:
 
-- **Acceptable (2):** When data is classified as “Acceptable,” the platform may delay updates to the token valuation until further verification.
-- **Outlier (3):** If flagged as an “Outlier,” asset trading can be temporarily paused for manual review.
+- **Acceptable (5):** When data is classified as “Acceptable,” the platform may delay updates to the token valuation until further verification.
+- **Outlier (0):** If flagged as an “Outlier,” asset trading can be temporarily paused for manual review.
 >Outcome: Accurate valuations and prevention of faulty token issuance.
 
 ### Decentralized Exchanges (DEXs)
@@ -93,15 +95,15 @@ Scenario: DEXs use price oracles to set asset prices for liquidity pools.
 
 Implementation:
 
-- **Acceptable (2):** During mild volatility, a DEX can increase slippage tolerance or dynamic fees to reduce arbitrage risks.
-- **Outlier (3):** If a price is flagged as an outlier, the DEX can pause trades or fallback to a secondary data source.
+- **Acceptable (5):** During mild volatility, a DEX can increase slippage tolerance or dynamic fees to reduce arbitrage risks.
+- **Outlier (0):** If a price is flagged as an outlier, the DEX can pause trades or fallback to a secondary data source.
 >Outcome: Mitigation of price manipulation and front-running exploits.
 
 ### Insurance Protocols
 Scenario: Insurance protocols trigger payouts based on oracle data.
 Implementation:
-- **Acceptable (2):** For “Acceptable” data, protocols can request a secondary confirmation to validate the claim.
-- **Outlier (3):** If flagged as an outlier, the payout can be put on hold for further verification.
+- **Acceptable (5):** For “Acceptable” data, protocols can request a secondary confirmation to validate the claim.
+- **Outlier (0):** If flagged as an outlier, the payout can be put on hold for further verification.
 >Outcome: Prevention of false claims and exploitation.
 
 ##  Benefits 
