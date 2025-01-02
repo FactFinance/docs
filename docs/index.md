@@ -38,9 +38,11 @@ timeline
 	Mar/2024: Solana Hackathon
 	Sep/2024: Latam Bootcamp
 ```
+Morgan Creek Digital
+:	Pre-Seed
 
 Outlier Ventures 
-:	Acceleration program cohort 
+:	Acceleration program  
 
 Solana Fundation 
 :	First place at Renaissance Brazilian Edition. 
