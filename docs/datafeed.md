@@ -15,17 +15,39 @@ Includes indicators such as Consumer Price Index (CPI), interest rates, and fore
 Data Feed | FeedId | Description | Source
 ---|---
 CDI | `1001` | Interbank Deposit Certificate | Central Bank
-USD-BRL | `1002` | PTax | Central Bank
+Selic | `1002` | Special System for Settlement and Custody | Central Bank
+IGP-M | `1003` |  General Market Price Index | IBRE
+USD-BRL | `1100` | PTax - Reference Exchange Rate | Central Bank
+CDI Daily| `1101` | CDI Daily | Central Bank
+
 
 ==- Details
 **CDI** - The CDI (Interbank Deposit Certificate) is an index that measures the interest rate used for loans between banks in Brazil, serving as a benchmark for fixed-income investments. 
-- Decimal: 6
-- Update Frequency: Daily
+- Decimal: 2
+- Update Frequency: Monthly
+- License: Open Oracle
+- Interface: Pull, Push and DApp
+
+**Selic** - It refers to the system used by the Central Bank of Brazil to manage the trading of government securities and essentially acts as the benchmark interest rate for the Brazilian economy
+- Decimal: 2
+- Update Frequency: Monthly
+- License: Open Oracle
+- Interface: Pull, Push and DApp
+
+**IGP-M** - The General Market Price Index, expressed in index points, with a base value of 100 in August 1994, calculated by the Brazilian Institute of Economics (IBRE) of the Getulio Vargas Foundation (FGV). 
+- Decimal: 2
+- Update Frequency: Monthly
 - License: Open Oracle
 - Interface: Pull, Push and DApp
 
 **USR-BRL** - The PTAX dollar is the exchange rate calculated by the Central Bank of Brazil based on the average buying and selling rates of the dollar in the interbank market. It is widely used as a reference for contracts and financial operations
 - Decimal: 4
+- Update Frequency: Daily
+- License: Open Oracle
+- Interface: Pull, Push and DApp
+
+ **CDI Daily** - The CDI (Interbank Deposit Certificate) is an index that measures the interest rate used for loans between banks in Brazil, serving as a benchmark for fixed-income investments. 
+- Decimal: 6
 - Update Frequency: Daily
 - License: Open Oracle
 - Interface: Pull, Push and DApp
