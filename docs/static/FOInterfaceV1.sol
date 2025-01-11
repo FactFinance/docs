@@ -5,8 +5,8 @@ pragma solidity ^0.8.24;
 /// @notice This interface defines the external view functions for accessing data feeds
 /// @dev Implemented by contracts that provide oracle data feeds
 interface FOInterfaceV1 {
-    function getFeed(uint8 _feedId) external  returns (DataFeed memory _datafeed);
-    function getReserve(address _assetId) external returns (DataAsset memory _dataAsset);
+    function getFeed(uint8 _feedId) external view returns (DataFeed memory _datafeed);
+    function getReserve(address _assetId) external view returns (DataAsset memory _dataAsset);
     function subcribeOracle(address _contractAddress,  string calldata _projectName) external;
 }
 
