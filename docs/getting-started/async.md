@@ -1,6 +1,6 @@
 ---
 label: Async - Pull
-order: -99
+order: -002
 icon: dependabot
 expanded: false
 ---
@@ -50,23 +50,23 @@ The **FOInterfaceV1** contract provides an interface for interacting with the **
    - **Output:**
      - `transactionId` (uint128): A unique identifier for tracking the request.
 
-   **Example Request Encoding in JavaScript:**
-   ```javascript
-   // Request car builder, model, and year
-   const carRequest = new ethers.AbiCoder().encode(
-       ["string", "string", "uint128"],
-       ["vw", "golf", 2021]
-   );
-   ```
 
-   - **Example Solidity Function:**
+   - **Request:**
    ```solidity
-   function requestData(uint16 code, bytes calldata request) public {
-       uint128 transactionId = fOracle.requestAsyncData(code, request);
+   function requestData(uint16 code, bytes calldata requestDetail) public {
+       uint128 transactionId = fOracle.requestAsyncData(code, requestDetail);
        emit RequestSent(transactionId, code);
    }
    ```
 
+   **Some data feed allow request detail - Encoding in JavaScript:**
+   ```javascript
+   // Request car builder, model, and year
+   const requestDetail = new ethers.AbiCoder().encode(
+       ["string", "string", "uint128"],
+       ["vw", "golf", 2021]
+   );
+   ```
    **Oracle Callbacks:**
    The response can be received in two formats: `DataPackage` or binary.
 
