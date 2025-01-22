@@ -1,5 +1,5 @@
 ---
-label: Sync Oracle - Push
+label: Sync - Push
 order: -001
 icon: rocket
 expanded: false
