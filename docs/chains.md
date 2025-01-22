@@ -29,6 +29,9 @@ The Fact Finance Oracle is deployed across multiple blockchain networks, providi
 ==- Gnosis
 ` 0xf4574F65c6Ef0275774fF059e38a173801E040F8 `
 
+==- Sepolia
+` 0x6f97dca6f8064ec8c3a3d3d13257663b953d9c8c `
+
 ==- Solana
 ` 9UYoqKcSHFhTBRoiYBcrkabsBbUKAdx68TZGLKokZKR1 `
 ===
