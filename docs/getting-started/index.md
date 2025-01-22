@@ -23,7 +23,7 @@ The Synchronous Oracle provides real-time data updates directly on-chain. Data f
 - **Use Case:** Ideal for applications requiring continuous access to on-chain data, such as economic indices and public metrics.
 - **Integration:** Developers retrieve data using the `getSyncData` function in the Fact Oracle contract.
 
-[/sync](/sync)
+[/sync](/getting-started/sync/)
 
 ---
 
@@ -33,7 +33,7 @@ The Asynchronous Oracle operates on a request-response model. Users submit data 
 - **Use Case:** Suitable for scenarios where data requests are specific or dynamic, such as weather information, real estate details, or car insurance data.
 - **Integration:** Developers submit requests using the `requestAsyncData` function and process responses via `OracleDataCallback` or `OracleBytesCallback`.
 
-[/async](/async)
+[/async](/getting-started/async/)
 
 ---
 
@@ -43,7 +43,7 @@ The DApp Oracle combines the strengths of push and pull models in a hybrid solut
 - **Use Case:** Designed for DApps requiring off-chain data integrity and on-chain validation, ensuring secure and transparent interactions.
 - **Integration:** Developers request data from the API and validate it on-chain using the `verifyDappData` function.
 
-[/dapp](/dapp)
+[/dapp](/getting-started/dapp)
 
 ---
 
