@@ -1,7 +1,8 @@
 ---
 label: Proof of Reserve
-order: -001
+order: -100
 icon: project-roadmap
+visibility: hidden 
 ---
 
 # Proof of Reserve Interface
