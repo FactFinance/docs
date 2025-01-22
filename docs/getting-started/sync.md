@@ -1,5 +1,5 @@
 ---
-label: Getting Started
+label: Sync Oracle - Push
 order: -100
 icon: rocket
 expanded: false
