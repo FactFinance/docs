@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.24;
+pragma solidity 0.8.28;
 
 /// @title Fact Oracle Interface V1
 /// @notice This interface defines the external view functions for accessing data feeds
 /// @dev Implemented by contracts that provide oracle data feeds
 interface FOInterfaceV1 {
-    function getFeed(uint8 _feedId) external view returns (DataFeed memory _datafeed);
-    function getReserve(address _assetId) external view returns (DataAsset memory _dataAsset);
-    function subcribeOracle(address _contractAddress,  string calldata _projectName) external;
+    function getSyncData(uint16 code) external view returns (DataFeed memory datafeed);
+    function requestAsyncData(uint16 code, bytes calldata request) external returns (uint128 transactionId);
+    function verifyDappData(DataPackage calldata dataPackage) external view returns (bool);
 }
 
 /// @title Data Feed Struct
@@ -15,16 +15,21 @@ interface FOInterfaceV1 {
 /// @dev Used to store oracle data with an associated confidence score
 
 struct DataFeed {   
-    int256 value;       /// @dev Integer value of the data feed
-    uint256 updatedAt;   /// @dev timestamp of backend data update
-    uint8 decimal;       /// @dev Number of decimal places for the data value
+    int128 value;       /// @dev Integer value of the data feed
+    uint64 updatedAt;   /// @dev timestamp in seconts of backend data updated
+    uint8 decimal;      /// @dev Number of decimal places for the data value
     uint8 confidence;   /// @dev Confidence level of the data feed
-                        /// @dev 1: outlier, 2: acceptable, 3: reliable
+                        /// @dev 0: outlier, 5: acceptable, 95: reliable    
+    bytes6 info;        /// @dev Additional information about the data feed                
 }
 
-struct DataAsset {
-    uint256 value;      /// @dev Integer value of the asset
-    uint256 updatedAt;  /// @dev Timestamp of backend data update
+struct DataPackage {   
+    uint16 code;          /// @dev Code of the data feed
+    uint16 licenseGroup;  /// @dev License group                                           
+    int128 value;       /// @dev Integer value of the data feed
+    uint64 updatedAt;   /// @dev timestamp in seconts of backend data updated
     uint8 decimal;      /// @dev Number of decimal places for the data value
-    string info;        /// @dev Additional information about the asset
+    uint8 confidence;   /// @dev Confidence level of the data feed                
+    bytes6 info;        /// @dev Additional information about the data feed    
+    bytes msgHash;        /// @dev Hash of the message
 }
