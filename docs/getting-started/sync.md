@@ -1,6 +1,6 @@
 ---
 label: Sync Oracle - Push
-order: -100
+order: -001
 icon: rocket
 expanded: false
 ---
@@ -68,18 +68,25 @@ Explanation:
 
 **Example Usage in Solidity:**
 ```solidity
+
+ /*  Oracle Usage */
+ /// Retrieves the latest data feed from the oracle and updates contract state variables
+ function getSyncData(uint16 code) public {
+     _data = _fOracle.getSyncData(code);
+     _weatherDetail = abi.decode(_data.info, (Weather));
+            
+ }
+
+DataFeed public _data;
+Weather public _weatherDetail
+
 struct Weather {
-    int8 temperature;
     int8 min;
     int8 max;
     int8 humidity;
     int8 windSpeed;
 }
 
-function parseWeather(bytes6 info) public pure returns (Weather memory) {
-    Weather memory _weather = abi.decode(info, (Weather));
-    return _weather;
-}
 ```
 
 
