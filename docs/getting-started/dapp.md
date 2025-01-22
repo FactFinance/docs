@@ -1,6 +1,6 @@
 ---
 label: dApp - Hash 
-order: -98
+order: -003
 icon: codescan
 expanded: false
 ---
@@ -21,7 +21,7 @@ The DApp Oracle workflow ensures trust by allowing users to interact with both d
 
 ## API Request
 To request data, make an HTTP GET request to the following endpoint:
-```plaintext
+```
 https://api.fact.finance/get/[code]
 ```
 
@@ -29,7 +29,7 @@ https://api.fact.finance/get/[code]
 
 ### Example API Request
 For example, to request a data package for a specific code:
-```plaintext
+```
 https://api.fact.finance/get/12345
 ```
 
@@ -82,7 +82,7 @@ function verifyDappData(DataPackage calldata dataPackage) public view returns (b
 ### Example Integration
 ```solidity
 function validateDataPackage(DataPackage calldata dataPackage) public {
-    require(oracle.verifyDappData(dataPackage), "Invalid Data Package");
+    require(oracle.verifyDappData(dataPackage), "Data modified by the user");
     // Process the valid data package
 }
 ```
