@@ -104,7 +104,7 @@ struct Weather {
 
    **getSyncData():** Retrieve the latest data feed for a specific `code`.  
    - **Parameter:**
-     - `code` (uint16): The identification code of the feed. Codes for various feeds can be found at [/data](/data).
+     - `code` (uint16): The identification code of the feed. Codes for various feeds can be found at [/datafeed](/data).
    - **Example:**
    ```solidity
    function getSyncData(uint16 code) public {
