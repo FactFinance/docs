@@ -42,7 +42,7 @@ The **FOInterfaceV1** contract provides an interface for interacting with the **
 
    **requestAsyncData():** Submit a request to the Oracle for a specific data feed.  
    - **Parameters:**
-     - `code` (uint16): The identification code of the feed. Codes for various feeds can be found at [/datafeed](/data).
+     - `code` (uint16): The identification code of the feed. Codes for various feeds can be found at [Data Feed list](/datafeed).
      - `request` (bytes): Encoded parameters for the Oracle request, allowing additional details to be included. Examples:
        - **Real Estate:** Apartment register number.
        - **Weather:** City name.
