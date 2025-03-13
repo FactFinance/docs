@@ -35,7 +35,7 @@ OEV happens when an oracle provider or an external actor leverages its access to
 Fact Finance provides tailored solutions to mitigate the risks associated with OEV, ensuring fair and transparent data feeds for smart contracts. Our approach includes:
 
 ###  **DApp Oracle**
-A decentralized oracle infrastructure that minimizes the risk of data manipulation by ensuring transparency in data aggregation and delivery.
+A decentralized oracle infrastructure that combines APIs and onchain validation.
 
 ###  **Commit-Reveal Mechanism**
 A cryptographic technique that prevents frontrunning and pre-trade arbitrage by submitting hashed commitments before revealing actual data, making it impossible for attackers to anticipate price updates.
