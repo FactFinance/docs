@@ -4,84 +4,49 @@ order: -9
 icon: dependabot
 ---
 
-# Oracle Extractable Value (OEV)
+# **Oracle Extractable Value (OEV)**
 
-Oracle Extractable Value (OEV) refers to the value that can be captured or extracted by an oracle or its operator due to its privileged position in providing data to smart contracts. Since oracles supply critical off-chain data (e.g., asset prices, interest rates, or events) to blockchains, their ability to influence or control the timing and accuracy of data updates creates potential risk for manipulation, or exploitation to make profit.
+## **The Problem:**
 
-OEV is analogous to Maximal Extractable Value (MEV) in blockchain transactions, where miners or validators extract profits by prioritizing or reordering transactions. Similarly, in the context of oracles, operators can exploit their role to extract value by strategically delaying or manipulating the delivery of data.
+Oracle Extractable Value (OEV) is a significant challenge in blockchain ecosystems, where oracles act as a bridge between off-chain data and smart contracts. Similar to Maximal Extractable Value (MEV), OEV arises when an oracle—or entities with privileged access to its data—can manipulate the order, timing, or accuracy of price updates for financial gain. This manipulation can lead to unfair advantages in decentralized finance (DeFi), compromising market integrity and user trust.
 
-## How OEV is Extracted
+### **How OEV Occurs**
+OEV happens when an oracle provider or an external actor leverages its access to price updates before they are reflected on-chain. This can lead to unfair liquidations, arbitrage, or market distortions. Key forms of OEV include:
 
-Oracles may extract value in several ways
+- **Timing Manipulation:** Oracles may intentionally delay or accelerate price updates to create arbitrage opportunities.
+- **Front-Running Liquidations:** Oracles can front-run undercollateralized positions before other users react.
+- **Biased Data Submission:** Centralized oracles may provide manipulated or skewed data to benefit specific entities.
+- **Exploiting Off-Chain Market Data:** Oracles with privileged access to market data may trade ahead of on-chain updates.
 
-### Timing Manipulation
-Oracles can delay or accelerate the delivery of price updates or other critical data to create arbitrage opportunities.
->Example: If the price of ETH is rapidly increasing, an oracle may delay updating a lending protocol to allow the operator to liquidate undercollateralized positions at outdated prices.
+---
 
-### Front-Running Liquidations
-Oracles supplying price feeds to lending protocols may front-run liquidation opportunities by triggering a liquidation themselves or prioritizing certain users’ transactions.
->Example: An oracle updates a price feed, sees an undercollateralized position before the network does, and acts on the liquidation opportunity.
+## **Protocols Affected by OEV**
 
-### Providing Biased Data
-Centralized or poorly secured oracles may intentionally skew data to benefit specific entities or extract value.
->Example: An oracle reports an artificially low price for a token to enable cheaper purchases or profitable arbitrage.
+| **Protocol Type**            | **Main OEV Risk**                                          |
+|-----------------------------|------------------------------------------------------------|
+| **Lending Platforms**       | Delayed or manipulated prices can trigger unfair liquidations. |
+| **Decentralized Exchanges** | Oracles influencing price updates can lead to sandwich attacks or arbitrage. |
+| **Prediction Markets**      | Manipulated data reporting can distort market outcomes. |
+| **Stablecoins**             | Inaccurate collateral valuations can cause instability. |
 
-### Leveraging Off-Chain Insights
+---
 
-Oracles with access to off-chain market data or trade activity can exploit this information for personal gain before supplying it to the blockchain.
->Example: An oracle operator trades based on off-chain market movements that have not yet been reflected on-chain.
+## **Fact Finance’s Solutions to Mitigate OEV**
+Fact Finance provides tailored solutions to mitigate the risks associated with OEV, ensuring fair and transparent data feeds for smart contracts. Our approach includes:
 
-### How Oracles Mitigate OEV Risks
+###  **DApp Oracle**
+A decentralized oracle infrastructure that minimizes the risk of data manipulation by ensuring transparency in data aggregation and delivery.
 
-The potential for OEV makes oracle design and governance critical to maintaining trust in blockchain ecosystems. Several strategies help mitigate OEV risks:
+###  **Commit-Reveal Mechanism**
+A cryptographic technique that prevents frontrunning and pre-trade arbitrage by submitting hashed commitments before revealing actual data, making it impossible for attackers to anticipate price updates.
 
-### Decentralized Oracle Networks
-Using multiple independent data providers ensures no single entity has control over the data, reducing the risk of manipulation.
->Example: Oracles  aggregate data from numerous sources and nodes, minimizing the likelihood of collusion.
+###  **Salt Solution for Secure Data Delivery**
+By encrypting price updates with a unique salt value, Fact Finance ensures that data remains private until it is securely decrypted on-chain, preventing mempool-based exploits.
 
-### Data Aggregation
-Combining data from various sources reduces the impact of errors or bias from any single source.
->Example: A price oracle may use data from multiple exchanges to calculate a weighted average price for an asset.
-
-### Transparency and Open Auditing
-Requiring oracles to publicly log data updates and decision-making processes increases accountability.
->Example: Proof-of-reporting mechanisms allow anyone to verify the accuracy and timeliness of oracle updates.
-
-### Cryptographic Proofs
-Using cryptographic techniques such as zero-knowledge proofs ensures data authenticity and prevents tampering.
->Example: An oracle provides a hash of the data it processes, allowing smart contracts to verify its validity without seeing raw data.
-
-### Slashing Mechanisms
-In staking-based oracle networks, operators may lose their staked tokens for providing incorrect or malicious data.
->Example: A node operator may be penalized if it supplies inaccurate price feeds.
-
-### Incentive Alignment
-Aligning oracle operators’ rewards with honest and timely data delivery reduces their incentive to exploit OEV.
->Example: Operators earn more fees by maintaining a long-standing reputation for accurate data provision.
-
-## Use Cases Affected by OEV
-
-OEV risks can arise in multiple DeFi use cases, including:
-
-   |   
----|---
-Lending Protocols | Timely and accurate price feeds are essential for fair liquidations and collateral management.
-Decentralized Exchanges (DEXs) | Price manipulation via oracles can lead to unfair trades or arbitrage opportunities.
-Prediction Markets | Manipulating event outcomes or reporting delays can undermine the integrity of market resolutions.
-Stablecoins | Oracles supplying collateral valuations for stablecoins could introduce instability by delaying or falsifying data.
-
-## Why OEV Matters
-
-Understanding and mitigating Oracle Extractable Value is essential because:
-
-- Trust in Oracles: Users and developers must trust that oracle data is accurate, timely, and unbiased.
-- DeFi Ecosystem Integrity: OEV exploitation undermines fairness and security, threatening the long-term sustainability of DeFi.
-- Economic Efficiency: Reducing OEV minimizes unnecessary costs and ensures efficient market operations.
-
-By designing oracles with robust decentralization, transparency, and accountability, blockchain ecosystems can reduce OEV risks and maintain trust in their financial infrastructure.
+These mechanisms work together to provide a **secure, reliable, and tamper-resistant** data infrastructure that strengthens the DeFi ecosystem and protects users from OEV-related attacks.
 
 ## Contact 
 
-At Fact Finance, we implement advanced measures to mitigate OEV risks, including decentralization, proof of authenticity, and continuous monitoring. Want to learn more about OEV or assess if your project is protected? Contact our audit team for a detailed evaluation and tailored recommendations.
+Want to learn more about OEV or assess if your project is protected? Contact our audit team for a detailed evaluation and tailored recommendations.
 
 Audit team projects@fact.finance :icon-codescan:
