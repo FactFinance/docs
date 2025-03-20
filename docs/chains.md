@@ -24,7 +24,7 @@ The Fact Finance Oracle is deployed across multiple blockchain networks, providi
 
 ==- XDC
 
-` 0x7c7410fead839614f30485c65a7247cf47299794 `
+` 0x5DE7C939998f9eD3A66a7712a7b298816400E71D `
 
 ==- Gnosis
 ` 0xf4574F65c6Ef0275774fF059e38a173801E040F8 `
