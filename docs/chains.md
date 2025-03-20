@@ -11,7 +11,7 @@ The Fact Finance Oracle is deployed across multiple blockchain networks, providi
 +++ Mainnet
 ==- XDC
 
-` xdc05bdde11dae31e94dd1ba1352701259da6913822 `
+` 0x5DE7C939998f9eD3A66a7712a7b298816400E71D `
 
 ==- Gnosis
 ` 0x8F84B53D98686346682e5f9cD9248B72F8a7383F `
@@ -24,7 +24,7 @@ The Fact Finance Oracle is deployed across multiple blockchain networks, providi
 
 ==- XDC
 
-` 0x5DE7C939998f9eD3A66a7712a7b298816400E71D `
+` xdcd26190e365a052228441e7e3236bfb36128ca9e8 `
 
 ==- Gnosis
 ` 0xf4574F65c6Ef0275774fF059e38a173801E040F8 `
